@@ -58,7 +58,6 @@ class DashboardMitra extends MY_Controller {
                 $this->data['msg']   = 'Pilih Store untuk melakukan aktivitas pada sistem ini.';
             }
             $this->data['form']  = 'signinstore'; 
-            $this->data['info'] = $this->getInfoTrans();
         }else{
             $this->data['list']  = $this->apilib->company('GET')['data'];  
             if(empty($this->data['list'])){
@@ -67,6 +66,11 @@ class DashboardMitra extends MY_Controller {
                 $this->data['msg']   = 'Pilih Company untuk melakukan aktivitas pada sistem ini.';
             } 
             $this->data['form']  = 'signincompany';
+        }  
+
+        if(isset($_COOKIE['token_store'])){
+            $this->data['investor'] = $this->apilib->investor('GET')['data'];  
+            $this->data['info']     = $this->getInfoTrans();
         }
 
 		$this->view('mitra/dashboard_mitra_v',$this->data);

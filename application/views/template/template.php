@@ -45,7 +45,11 @@
         <a href="<?php echo base_url()?>Pusat/DashboardPusat/Profil" class="nav-link">Profile</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?php echo base_url()?>Pusat/DashboardPusat/change_store" class="nav-link">Change Store</a>
+        <?php if(@$_COOKIE['type_login'] == "pusat") {?>
+            <a href="<?php echo base_url()?>Pusat/DashboardPusat/change_store" class="nav-link">Change Store</a>
+        <?php }elseif(@$_COOKIE['type_login'] == "mitra"){ ?>
+            <a href="<?php echo base_url()?>mitra/DashboardMitra/change_store" class="nav-link">Change Store</a>
+        <?php }  ?>
       </li>
     </ul>
 

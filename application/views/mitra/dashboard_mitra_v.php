@@ -57,11 +57,11 @@
                     </div>
                 </div> 
             <?php } ?>
-            <?php if(isset($info)){ ?>
+            <?php if(!empty($info)){ ?>
             <div class="col-md-12">
                 <div class="card">
                 <div class="card-header border-transparent">
-                    <h3 class="card-title">Latest Orders</h3>
+                    <h3 class="card-title">List Transaction</h3>
 
                     <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -74,23 +74,30 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
+                    <?php print_arr($investor); ?>
                     <div class="table-responsive">
-                    <table class="table m-0">
-                        <thead>
-                            <tr>
-                                <th>Tanggal</th>
-                                <th>Jumlah</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($info['countdata'] as $key => $value) { ?>
-                            <tr>
-                                <td><?php echo $value['date'][0] ?></td>
-                                <td><?php echo $value['sum'][0] ?></td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                        <table class="table m-0">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                    if(isset($info['countdata'])){
+                                    foreach ($info['countdata'] as $key => $value) { 
+                                ?>
+                                <tr>
+                                    <td><?php echo $value['date'][0] ?></td>
+                                    <td><?php echo $value['sum'][0] ?></td>
+                                </tr>
+                                <?php 
+                                    } 
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.table-responsive -->
                 </div>

@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Kloter</h1>
+            <h1>Data Detail <?php echo $nama_kloter?></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
             <!-- Default box -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Form Kloter</h3>
+                <h3 class="card-title">Form Detail Kloter <?php echo $nama_kloter?></h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -55,6 +55,12 @@
                         </select>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Keuntungan</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="percentage" required class="form-control"  placeholder="Enter Keuntungan dalam angka">
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -66,7 +72,7 @@
             <!-- /.card -->
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title">List Kloter <?php echo $this->uri->segment(4);?>
+              <h3 class="card-title">List Data <?php echo $nama_kloter?>
               </h3>
             </div>
             <!-- /.card-header -->
