@@ -74,7 +74,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
-                    <?php print_arr($investor); ?>
+                    <?php print_arr($investor);   ?>
                     <div class="table-responsive">
                         <table class="table m-0">
                             <thead>
