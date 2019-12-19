@@ -72,6 +72,13 @@
                         </select>
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Keuntungan</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="percentage" required class="form-control"  placeholder="Enter Keuntungan dalam angka">
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
