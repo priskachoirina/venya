@@ -85,7 +85,7 @@
                             <div class="card-body">
                                 <ul>
                                 <?php foreach ($table['user'] as $key => $value) { ?>
-                                    <li><?php echo $value['email'].'-'. $value['percentage'].'% ';?> </li>
+                                    <li><?php echo $value['email'];?> </li>
                                 <?php } ?>
                                 </ul>
                             </div>
