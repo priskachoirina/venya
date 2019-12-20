@@ -52,8 +52,8 @@ class APILib
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($curl, CURLOPT_FAILONERROR, true);
 		
-		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false );
-		curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 2 );
+		// curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false );
+		// curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 2 );
 		
 		// print_arr(curl_exec($curl));
 		// print_arr(curl_getinfo($curl));

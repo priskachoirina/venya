@@ -133,11 +133,10 @@
                 <thead>
                 <tr>
                   <th width="1%">#</th>
-                  <th width="30%">Name</th>
-                  <th width="5%">SKU</th>
-                  <th width="5%">UOM</th>
-                  <th width="5%">Store</th>
+                  <th width="5%">Img</th> 
+                  <th width="20%">Name</th> 
                   <th width="5%">Price</th>
+                  <th width="5%">Buy Price</th>
                   <th width="5%">Created</th>
                   <th width="5%">Modified</th>
                   <th width="30%">Action</th>
@@ -148,14 +147,22 @@
                      foreach ($table as $key => $value) { ?>
                         <tr>
                             <td><?php echo $value['id'];?></td>
-                            <td><?php echo $value['name'];?></td>
-                            <td><?php echo $value['sku'];?></td>
-                            <td><?php echo $value['uom'];?></td>
-                            <td><?php echo $value['store_id'];?></td>
+                            <td>
+                                <img src="<?php echo $value['image']?>" height="10%">
+                            </td>
+                            <td><?php echo $value['name'];?></td> 
                             <td><?php echo $value['price'];?></td>
+                            <td><?php echo $value['buy_price'];?></td>
                             <td><?php echo $value['date_created'];?></td>
                             <td><?php echo $value['date_modified'];?></td>
                             <td>
+                                <button type="button" 
+                                    class="btn btn-sm btn-outline-info btn-flat" 
+                                    class="product-modal"
+                                    data-json='<?php echo json_encode($table[$key])?>'
+                                >
+                                <i class="fas fa-info-circle"></i> Detail
+                                </button>
                                 <a href="<?php echo base_url().'pusat/Products/edit/'.$value['id'] ?>" class="btn btn-sm btn-outline-warning btn-flat"><i class="fas fa-edit"></i> Edit</a>
                                 <a href="<?php echo base_url().'pusat/Products/delete/'.$value['id'] ?>" class="btn btn-sm btn-outline-danger btn-flat" onclick="javascript:confirm('Are you sure ? ')"><i class="fas fa-trash-alt"></i> Delete</a>
                             </td>
@@ -174,3 +181,40 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal fade" >
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <img src="" class="img-responsive" style="max-height:250px;">
+                <dl class="dl-horizontal"> 
+                  <dt>Price</dt>
+                  <dd id="p_price"></dd>
+                  <dt>Buy Price</dt>
+                  <dd id="p_buy"></dd> 
+                  <dt>SKU</dt>
+                  <dd id="p_sku"></dd> 
+                  <dt>Status</dt>
+                  <dd id="p_status"></dd> 
+                  <dt>Description</dt>
+                  <dd id="p_desc"></dd>
+                </dl>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+             
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

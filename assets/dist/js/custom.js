@@ -50,6 +50,21 @@ $( document ).ready(function() {
         $('.open-modal .modal-title').html($(this).attr('data-title'));
         $(".open-modal").modal();
     });
+
+    $('.product-modal').click(function (e) { 
+        e.preventDefault();
+        
+        var data = JSON.parse($(this).attr('data-json'));
+        $('.modal .modal-title').html('Detail Product '+data['name']);
+        $('.modal-body img').attr('src', data['image']);
+        $('#p_price').html(data['price']);
+        $('#p_buy').html(data['buy_price']);
+        $('#p_sku').html(data['sku']);
+        $('#p_status').html(data['status']);
+        $('#p_desc').html(data['desc']);
+        
+        $(".modal").modal();
+    });
     
 });
 

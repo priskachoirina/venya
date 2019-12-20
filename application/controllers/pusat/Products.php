@@ -20,9 +20,9 @@ class Products extends MY_Controller {
         $table  = $this->dataapi;
 
         $data   = !empty($table['data']) ? $table['data'] : array();
-        // print_arr($data);exit;
+         
         foreach ($data as $key => $value) {            
-            
+            $data[$key]['image']            = base_url().'assets/img/products/'.$value['image'];
             $data[$key]['date_created']     = getDateIndo($value['date_created']);
             $data[$key]['date_modified']    = getDateIndo($value['date_modified']); 
         }
@@ -47,13 +47,11 @@ class Products extends MY_Controller {
     public function addData()
     {    
         $upload = $this->uploadimg($_FILES);
-         
         if(isset($upload['upload_data'])){
             
             $_POST['image'] = $upload['upload_data']['orig_name'];
             
-            $save = $this->apilib->products('POST', $_POST );
-            print_arr($save);exit;
+            $save = $this->apilib->products('POST', $_POST ); 
             if(strpos($save['message'], 'Succes') !== false ){
                 $this->session->set_userdata($this->data['key'], array(
                 "alert"     => "alert-success",
