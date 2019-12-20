@@ -16,7 +16,6 @@ class APILib
 			'store'     => isset($_COOKIE['token_store']) ? $_COOKIE['token_store'] : '',
 			'company'   => isset($_COOKIE['token_company']) ? $_COOKIE['token_company'] : ''
 		);
-
     }
 
     protected function callAPI($method, $url,$key='', $data=''){
@@ -42,19 +41,33 @@ class APILib
 			  if ($data)
 				 $url = sprintf("%s?%s", $url, http_build_query($data));
 		}
-	 
+	    
 		// OPTIONS:
+		curl_setopt($curl, CURLOPT_HEADER, 1);
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
 			"Access-Token: ".$key,
-		   'Content-Type: application/json',
+		    'Content-Type: application/json', 
 		));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($curl, CURLOPT_FAILONERROR, true);
 		
+		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false );
+		curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 2 );
+		curl_setopt($curl, CURLOPT_NOBODY         ,true); 
+		
+		// print_arr(curl_exec($curl));
+		// print_arr(curl_getinfo($curl));
+		// print_arr(curl_error($curl)); 
+		// exit;
 		// EXECUTE:
 		$result = curl_exec($curl); 
-		if(!$result){die("Connection Failure");}
+		
+		if(!$result){
+		    echo curl_error($curl);
+		    die("Connection Failure"); 
+		}
 		curl_close($curl);
 		return $result;
     }
