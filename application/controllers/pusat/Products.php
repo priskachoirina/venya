@@ -35,7 +35,7 @@ class Products extends MY_Controller {
     {                 
         $this->data['form']  = base_url().'pusat/'. $this->page.'/addData';
         $this->data['table'] = $this->generateTable();
-
+        
         if(isset($_SESSION[$this->data['key']])){
             $this->data = array_merge($this->data, $_SESSION[$this->data['key']]);
             unset($_SESSION[$this->data['key']]);
@@ -51,7 +51,7 @@ class Products extends MY_Controller {
         if(isset($upload['upload_data'])){
             
             $_POST['image'] = $upload['upload_data']['orig_name'];
-            $_POST['image']
+            
             $save = $this->apilib->products('POST', $_POST );
             print_arr($save);exit;
             if(strpos($save['message'], 'Succes') !== false ){
