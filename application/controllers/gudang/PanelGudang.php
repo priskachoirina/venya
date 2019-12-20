@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class PanelMitra extends MY_Controller {
+class PanelGudang extends MY_Controller {
 
 	public $data;
 	public function __construct()

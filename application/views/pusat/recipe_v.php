@@ -35,29 +35,44 @@
                     <i class="fas fa-times"></i></button>
                 </div>
               </div>
-              <form id="form-kloter" class="form-horizontal" action="<?php echo $form; ?>" method="post">
+              <form id="form-kloter" class="form-horizontal" enctype="multipart/form-data" action="<?php echo $form; ?>" method="post">
                 <div class="card-body">
-                <?php if(isset($alert)){ ?>
-                    <div class="alert <?php echo $alert?> alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h4><i class="icon fas <?php echo $title_c == "Success" ? "fa-check" : "fa-ban"?>"></i> <?php echo $title_c ?> </h4>
-                        <?php echo $caption ?>
-                    </div>
-                    <br>
-                    <br>
-                <?php } ?>
-
+                    <?php if(isset($alert)){ ?>
+                        <div class="alert <?php echo $alert?> alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fas <?php echo $title_c == "Success" ? "fa-check" : "fa-ban"?>"></i> <?php echo $title_c ?> </h4>
+                            <?php echo $caption ?>
+                        </div>
+                        <br>
+                        <br>
+                    <?php } ?>
+                    
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Name</label>
+                        <label class="col-sm-2 col-form-label">Products</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" required class="form-control" value="<?php echo isset($edit_data) ? $edit_data['name'] : ""; ?>"  placeholder="Enter Name">
+                        <select class="form-control select2 select2-danger" name="product_id" data-placeholder="Select Product" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                            <?php foreach ($product as $key => $value) {
+                                echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
+                            } ?>
+                        </select>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">SKU</label>
+                        <label class="col-sm-2 col-form-label">Material</label>
                         <div class="col-sm-10">
-                            <input type="text" name="sku" required class="form-control" value="<?php echo isset($edit_data) ? $edit_data['sku'] : ""; ?>"  placeholder="Enter SKU">
+                        <select class="form-control select2 select2-danger" name="material_id" data-placeholder="Select Material" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                            <?php foreach ($material as $key => $value) {
+                                echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
+                            } ?>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Qty</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="qty" required class="form-control" value="<?php echo isset($edit_data) ? $edit_data['qty'] : ""; ?>"  placeholder="Enter Qty">
                         </div>
                     </div>
 
@@ -66,22 +81,8 @@
                         <div class="col-sm-10">
                             <input type="text" name="uom" required class="form-control" value="<?php echo isset($edit_data) ? $edit_data['uom'] : ""; ?>"  placeholder="Enter UOM">
                         </div>
-                    </div> 
-                    <?php if(!isset($edit_data)){ ?>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Supplier</label>
-                            <div class="col-sm-10">
-                            <select class="form-control select2 select2-danger" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                                <option value="">Choose Supplier</option>
-                                <?php foreach ($supplier as $key => $value) {
-                                    echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
-                                } ?>
-                            </select>
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    
+                    </div>
+                
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -101,9 +102,12 @@
                 <thead>
                 <tr>
                   <th width="1%">#</th>
-                  <th width="30%">Name</th> 
-                  <th width="10%">Qty</th>
-                  <th width="2%">UOM</th>
+                  <th width="30%">Name</th>
+                  <th width="5%">SKU</th>
+                  <th width="5%">Store</th>
+                  <th width="5%">Price</th>
+                  <th width="5%">Created</th>
+                  <th width="5%">Modified</th>
                   <th width="30%">Action</th>
                 </tr>
                 </thead>
@@ -111,13 +115,16 @@
                     <?php 
                      foreach ($table as $key => $value) { ?>
                         <tr>
-                            <td><?php echo $value['material_id'];?></td> 
+                            <td><?php echo $value['id'];?></td>
                             <td><?php echo $value['name'];?></td>
-                            <td><?php echo $value['qty'];?></td>
-                            <td><?php echo $value['uom'];?></td> 
+                            <td><?php echo $value['sku'];?></td>
+                            <td><?php echo $value['store_id'];?></td>
+                            <td><?php echo $value['price'];?></td>
+                            <td><?php echo $value['date_created'];?></td>
+                            <td><?php echo $value['date_modified'];?></td>
                             <td>
-                                <a href="<?php echo base_url().'pusat/Materials/edit/'.$value['material_id'] ?>" class="btn btn-sm btn-outline-warning btn-flat"><i class="fas fa-edit"></i> Edit</a>
-                                <a href="<?php echo base_url().'pusat/Materials/delete/'.$value['material_id'] ?>" class="btn btn-sm btn-outline-danger btn-flat" onclick="javascript:confirm('Are you sure ? ')"><i class="fas fa-trash-alt"></i> Delete</a>
+                                <a href="<?php echo base_url().'pusat/Products/edit/'.$value['id'] ?>" class="btn btn-sm btn-outline-warning btn-flat"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="<?php echo base_url().'pusat/Products/delete/'.$value['id'] ?>" class="btn btn-sm btn-outline-danger btn-flat" onclick="javascript:confirm('Are you sure ? ')"><i class="fas fa-trash-alt"></i> Delete</a>
                             </td>
                         </tr>
                     <?php } ?>

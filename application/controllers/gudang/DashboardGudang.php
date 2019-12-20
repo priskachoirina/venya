@@ -30,7 +30,6 @@ class DashboardGudang extends MY_Controller {
                 $this->data['msg']   = 'Pilih Store untuk melakukan aktivitas pada sistem ini.';
             }
             $this->data['form']  = 'signinstore'; 
-            $this->data['info'] = $this->getInfoTrans();
         }else{
             $this->data['list']  = $this->apilib->company('GET')['data'];  
             if(empty($this->data['list'])){

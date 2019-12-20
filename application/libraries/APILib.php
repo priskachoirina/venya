@@ -232,7 +232,7 @@ class APILib
         POST : product_id, material_id, qty,uom 
         DELETE : recipe_id  
      */
-    public function recipe($method,$data)
+    public function recipe($method,$data=array())
     {
         return $this->format($method,'recipe',$this->token['store'],$data);
     }

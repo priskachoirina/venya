@@ -49,7 +49,9 @@
             <a href="<?php echo base_url()?>Pusat/DashboardPusat/change_store" class="nav-link">Change Store</a>
         <?php }elseif(@$_COOKIE['type_login'] == "mitra"){ ?>
             <a href="<?php echo base_url()?>mitra/DashboardMitra/change_store" class="nav-link">Change Store</a>
-        <?php }  ?>
+        <?php }else{  ?>
+            <a href="<?php echo base_url()?>Gudang/DashboardGudang/change_store" class="nav-link">Change Store</a>
+        <?php } ?>
       </li>
     </ul>
 

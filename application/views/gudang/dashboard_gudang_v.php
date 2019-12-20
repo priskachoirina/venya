@@ -32,7 +32,7 @@
                 </div> 
                 <?php foreach ($list as $key => $value) { ?>
                     <div class="col-12 col-sm-6 col-md-3">
-                        <a href="<?php echo base_url().'mitra/DashboardMitra/'.$form.'/'.$value['id']?>">
+                        <a href="<?php echo base_url().'gudang/DashboardGudang/'.$form.'/'.$value['id']?>">
                             <div class="info-box">
                                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-store-alt"></i></span>
 

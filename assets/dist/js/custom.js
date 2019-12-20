@@ -28,21 +28,29 @@ $( document ).ready(function() {
         "autoWidth": false,
       });
 
-      $('#InputFile').change(function(){
-          console.log('dsds');
+      //================= End Initialize ================== 
+
+      $('#InputFile').change(function(){ 
         if (this.files && this.files[0]) {
             var reader = new FileReader();
             
             reader.onload = function(e) {
                 $('#upload').removeAttr('style');
-                $('#upload img').attr('src', e.target.result);
-              
-            }
-            
+                $('#upload img').attr('src', e.target.result); 
+            } 
             reader.readAsDataURL(this.files[0]);
         }
       })
-    //================= End Initialize ================== 
+
+    //   ====================== call modal gudang====================
+    $('.open-modal').click(function (e) { 
+        e.preventDefault();
+        
+        var id = $(this).attr('data-id');
+        $('.open-modal .modal-title').html($(this).attr('data-title'));
+        $(".open-modal").modal();
+    });
+    
 });
 
 

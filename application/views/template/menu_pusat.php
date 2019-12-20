@@ -47,6 +47,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?php echo base_url()?>pusat/Recipe" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Recipe</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?php echo base_url()?>pusat/Investor" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Investor</p>
