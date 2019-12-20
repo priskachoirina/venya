@@ -24,8 +24,9 @@ class Investor extends MY_Controller {
             
             $data[$key]['date_created']     = getDateIndo($value['date_created']);
             $data[$key]['date_modified']    = getDateIndo($value['date_modified']);
-            
         }
+
+        // print_arr($data);exit;
 
         return $data; 
     }
@@ -34,7 +35,7 @@ class Investor extends MY_Controller {
     {                 
         $this->data['form']  = base_url().'pusat/'. $this->page.'/addData';
         $this->data['table'] = $this->generateTable();
-        $this->data['store'] = $this->apilib->stores('GET')['data'];
+        
         // print_arr($this->data['table'] );exit;
         if(isset($_SESSION[$this->data['key']])){
             $this->data = array_merge($this->data, $_SESSION[$this->data['key']]);
@@ -46,7 +47,7 @@ class Investor extends MY_Controller {
 
     public function addData()
     { 
-        $_POST['list_outlet'] = implode(',',$_POST['list_outlet']);
+        $_POST['list_outlet'] = '1';
         
         $save = $this->apilib->investor('POST', $_POST );
          

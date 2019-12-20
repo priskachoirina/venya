@@ -55,8 +55,9 @@ class DetailKloter extends MY_Controller {
     {              
         $this->data['form']         = base_url().'pusat/'.$this->page.'/addData/'.$this->uri->segment(4);
         $this->data['table']        = $this->generateTable(); 
-        $this->data['investor']     = $this->apilib->investor('GET')['data'];
+        $this->data['investor']     = $this->apilib->investor('GET')['data'];  
         $this->data['nama_kloter']  = $this->apilib->kloter('GET')['data'][0]['nama_kloter'];
+        $this->data['store']        = $this->apilib->stores('GET')['data'];
  
         if(isset($_SESSION[$this->data['key']])){
             $this->data = array_merge($this->data, $_SESSION[$this->data['key']]);
@@ -73,12 +74,14 @@ class DetailKloter extends MY_Controller {
         
         foreach ($_POST['list_investor']  as $key => $value) {
             $inv = $investor[searchArray($value, 'id', $investor)];
-            $listinv[] = $inv['list_outlet'];
             $this->apilib->investor('PUT',  array(
-                    'id_investor'=> $value,
-                    'percentage' => $_POST['percentage']
+                    'id_investor'   => $value,
+                    'list_outlet'   => implode(',',$_POST['list_outlet']),
+                    'percentage'    => $_POST['percentage']
                 )
             );
+
+            $listinv[] = implode(',',$_POST['list_outlet']);
         }
         
         $_POST['list_investor'] = implode(',',$_POST['list_investor']);

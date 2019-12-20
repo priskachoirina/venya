@@ -24,10 +24,10 @@ class Products extends MY_Controller {
         foreach ($data as $key => $value) {            
             
             $data[$key]['date_created']     = getDateIndo($value['date_created']);
-            $data[$key]['date_modified']    = getDateIndo($value['date_modified']);
-            
+            $data[$key]['date_modified']    = getDateIndo($value['date_modified']); 
         }
 
+        // print_arr($data);exit;
         return $data; 
     }
     
@@ -47,12 +47,13 @@ class Products extends MY_Controller {
     public function addData()
     {    
         $upload = $this->uploadimg($_FILES);
-        
+         
         if(isset($upload['upload_data'])){
             
-            $_POST['image'] = $upload['orig_name'];
+            $_POST['image'] = $upload['upload_data']['orig_name'];
+            $_POST['image']
             $save = $this->apilib->products('POST', $_POST );
-            
+            print_arr($save);exit;
             if(strpos($save['message'], 'Succes') !== false ){
                 $this->session->set_userdata($this->data['key'], array(
                 "alert"     => "alert-success",

@@ -90,6 +90,13 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Buy Price</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="buy_price" required class="form-control" value="<?php echo isset($edit_data) ? $edit_data['buy_price'] : ""; ?>"  placeholder="Enter Buy Price">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Image <span class="badge badge-info right">(jpg/png)</span></label>
                         <div class="col-sm-10">
                             <div class="input-group">
@@ -128,6 +135,7 @@
                   <th width="1%">#</th>
                   <th width="30%">Name</th>
                   <th width="5%">SKU</th>
+                  <th width="5%">UOM</th>
                   <th width="5%">Store</th>
                   <th width="5%">Price</th>
                   <th width="5%">Created</th>
@@ -142,6 +150,7 @@
                             <td><?php echo $value['id'];?></td>
                             <td><?php echo $value['name'];?></td>
                             <td><?php echo $value['sku'];?></td>
+                            <td><?php echo $value['uom'];?></td>
                             <td><?php echo $value['store_id'];?></td>
                             <td><?php echo $value['price'];?></td>
                             <td><?php echo $value['date_created'];?></td>

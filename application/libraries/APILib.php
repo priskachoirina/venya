@@ -43,7 +43,6 @@ class APILib
 		}
 	    
 		// OPTIONS:
-		curl_setopt($curl, CURLOPT_HEADER, 1);
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
 			"Access-Token: ".$key,
@@ -55,7 +54,6 @@ class APILib
 		
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false );
 		curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 2 );
-		curl_setopt($curl, CURLOPT_NOBODY         ,true); 
 		
 		// print_arr(curl_exec($curl));
 		// print_arr(curl_getinfo($curl));

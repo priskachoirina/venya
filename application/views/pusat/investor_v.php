@@ -60,18 +60,6 @@
                             <input type="password" name="password" required class="form-control"  placeholder="Enter Name">
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Store</label>
-                        <div class="col-sm-10">
-                        <select class="form-control select2 select2-danger" name="list_outlet[]" data-placeholder="Select Store" multiple="multiple" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                           
-                            <?php foreach ($store as $key => $value) {
-                                echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
-                            } ?>
-                        </select>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
