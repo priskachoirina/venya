@@ -109,9 +109,17 @@
                                 </div>
                             </div>
                             <br>
-                            <div id="upload" style="display:none;">
-                                <img class="img-fluid pad" src="" alt="Photo">
-                            </div>
+                            
+                            <?php if(isset($edit_data)){?>
+                                <div id="upload">
+                                    <img class="img-fluid pad" src="<?php echo base_url().'assets/img/products/'. $edit_data['image'] ?>" alt="Photo">
+                                </div>
+                                <input type="text" name="old_img" value="<?php echo $edit_data['image'] ?>"  >
+                            <?php }else{ ?>
+                                <div id="upload" style="display:none;">
+                                    <img class="img-fluid pad" src="" alt="Photo">
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -146,7 +154,7 @@
                     <?php 
                      foreach ($table as $key => $value) { ?>
                         <tr>
-                            <td><?php echo $value['id'];?></td>
+                            <td><?php echo $key+1 ;?></td>
                             <td>
                                 <img src="<?php echo $value['image']?>" height="10%">
                             </td>

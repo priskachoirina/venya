@@ -60,7 +60,7 @@ class MY_Controller extends CI_Controller {
 
         if(!isset($data['menu'])){
             $data['menu']   = 'template/menu_pusat';
-            $data['logout'] = 'PanelPusat/logout';
+            $data['logout'] = 'pusat/PanelPusat/logout';
         }
         
         $this->load->view('template/template', $data, FALSE);

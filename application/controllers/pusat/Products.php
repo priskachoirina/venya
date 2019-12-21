@@ -90,10 +90,18 @@ class Products extends MY_Controller {
 
     public function editData($id)
     {
+        if ($_FILES['upload']['name'] === "") {
+            $_POST['image'] = $_POST['old_img'];
+            unset($_POST['old_img']);
+        }else{
+            unlink('./assets/img/products/'.$_POST['old_img']);
+            $upload = $this->uploadimg($_FILES);
+            $_POST['image'] = $upload['upload_data']['orig_name'];
+        }
+
         $_POST['products_id'] = $id;
         
-        $update = $this->apilib->products('PUT', $_POST );
-
+        $update = $this->apilib->products("PUT", $_POST); 
         if(strpos($update['message'], 'Succes') !== false ){
             $this->session->set_userdata($this->data['key'], array(
                 "alert"     => "alert-success",
@@ -114,7 +122,7 @@ class Products extends MY_Controller {
     public function delete($id)
     { 
 
-        $update = $this->apilib->products('DELETE', array(
+        $update = $this->apilib->products("DELETE", array(
             'products_id' => $id
         ));
 

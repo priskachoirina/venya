@@ -77,7 +77,7 @@
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>  
-          <a href="<?php echo base_url().'/'.(isset($logout)) ? $logout : 'pusat/Panel/logout'?>" class="dropdown-item dropdown-footer"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+          <a href="<?php echo (isset($logout)) ? base_url().$logout : 'pusat/Panel/logout'?>" class="dropdown-item dropdown-footer"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
         </div>
       </li>
     </ul>
