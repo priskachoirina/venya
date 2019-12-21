@@ -48,7 +48,6 @@ class PanelPusat extends MY_Controller {
             setcookie('token_user', null, -1, '/'); 
             setcookie('token_company', null, -1, '/'); 
             setcookie('type_login', null, -1, '/'); 
-
             setcookie('company_sign', null, -1, '/'); 
 
             if(isset($_COOKIE['token_store'])){
@@ -59,7 +58,7 @@ class PanelPusat extends MY_Controller {
                 setcookie('store_sign', null, -1, '/'); 
             } 
 
-            redirect(base_url().'pusat/PanelPusat');
+            redirect(base_url());
         }else{
             redirect(base_url().'pusat/DashboardPusat');
         }

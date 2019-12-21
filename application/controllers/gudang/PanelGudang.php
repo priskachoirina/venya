@@ -58,7 +58,7 @@ class PanelGudang extends MY_Controller {
                 setcookie('store_sign', null, -1, '/'); 
             } 
 
-            redirect(base_url().'mitra/PanelMitra/'.$this->page);
+            redirect(base_url());
         }else{
             redirect(base_url().'mitra/DashboardMitra');
         }
